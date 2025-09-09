@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دعوة زفاف - محمود و سارة</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
+
+    :root {
+      --accent: #b58b3a;
+      --bg: #fff;
+      --muted: #666;
+    }
+    body[data-theme='default'] {
+      --accent: #b33a3a;
+    }
+    body[data-theme='gold'] {
+      --accent: #b58b3a;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #fff 0%, #f7f7f9 100%);
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+    }
+    .card {
+      width: 100%;
+      max-width: 900px;
+      padding: 22px;
+      background: var(--bg);
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(20, 20, 30, 0.06);
+      overflow: hidden;
+      text-align: center;
+      position: relative;
+      font-family: 'Amiri', serif;
+    }
+    .title {
+      font-size: 28px;
+      margin: 0 0 8px;
+    }
+    .names {
+      font-family: 'Scheherazade New', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 6px 0;
+    }
+    .names span {
+      display: inline;
+      margin: 0 10px;
+    }
+    .date-time {
+      font-size: 20px;
+      color: var(--accent);
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+    .details {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 0 20px;
+    }
+    .countdown-container {
+      background: #f7f7f9;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .countdown-item {
+      text-align: center;
+    }
+    .countdown-item span {
+      display: block;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .countdown-item small {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .location-section {
+      margin-top: 20px;
+    }
+    .location-btn, .calendar-btn, .message-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    .location-btn:hover, .calendar-btn:hover, .message-btn:hover {
+      background-color: #a07a33;
+    }
+    .footer {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 20px;
+    }
+    .animated-blooms {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .animated-blooms i {
+      position: absolute;
+      animation: fall 20s infinite linear;
+      opacity: 0;
+      font-size: 18px;
+      color: #e093a8;
+    }
+    .animated-blooms i.heart {
+        color: #e093a8;
+        transform: rotate(-45deg);
+        animation: heart-fall 20s infinite linear;
+        width: 15px;
+        height: 15px;
+        background: #e093a8;
+        border-radius: 50%;
+    }
+    .animated-blooms i.heart::before, .animated-blooms i.heart::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        border-radius: 50%;
+    }
+    .animated-blooms i.heart::before {
+        top: -50%;
+        left: 0;
+    }
+    .animated-blooms i.heart::after {
+        top: 0;
+        left: 50%;
+    }
+    .animated-blooms i.rose {
+        color: #b58b3a;
+        font-size: 20px;
+        transform: rotate(0deg);
+    }
+    .animated-blooms i.heart {
+      font-size: 18px;
+      color: #e093a8;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.8; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+    @keyframes heart-fall {
+        0% { transform: translateY(-10vh) rotate(-45deg); opacity: 0; }
+        10% { opacity: 0.8; }
+        100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+    .quran-cover {
+      background: #fdfaf3;
+      padding: 30px 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      position: relative;
+      text-align: center;
+      border: 1px solid #e0c890;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+    .quran-verse-content {
+      font-family: 'Amiri', serif;
+      font-size: 20px;
+      line-height: 1.8;
+      color: #333;
+    }
+    .quran-verse-content .reference {
+      font-size: 14px;
+      color: #777;
+      margin-top: 10px;
+    }
+    .music-control {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s;
+      z-index: 10;
+    }
+    .music-control:hover {
+      background-color: #f0f0f0;
+    }
+    .music-control i {
+      font-size: 24px;
+      color: var(--accent);
+    }
+    .messages-section {
+      margin-top: 30px;
+      text-align: right;
+    }
+    .messages-section h3 {
+      text-align: center;
+      font-size: 24px;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    .message-form {
+      margin-bottom: 20px;
+    }
+    .message-input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      resize: vertical;
+      font-size: 16px;
+      min-height: 60px;
+    }
+    .messages-list {
+      background: #f7f7f9;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: right;
+    }
+    .messages-list p {
+      background: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      border-right: 3px solid var(--accent);
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    .calendar-btn-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body dir="rtl" data-theme="gold">
+
+  <audio id="bg-music" src="https://github.com/Ma7Moud77723/MS/raw/refs/heads/main/And%20I%20Love%20You%20So(MP3_160K).mp3" loop></audio>
+  <div class="music-control" id="music-control">
+    <i class="fas fa-music"></i>
+  </div>
+  
+  <div class="animated-blooms"></div>
+  
+  <div class="card" id="card">
+    <div class="quran-cover">
+      <div class="quran-verse-content">
+        <p>وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</p>
+        <p class="reference">(الروم: 21)</p>
+      </div>
+    </div>
+
+    <h1 class="title">دعوة زفاف</h1>
+    <p class="details">بكل الحب، نتشرف بدعوتكم لمشاركتنا أجمل لحظات العمر، ففرحتنا لا تكتمل إلا بوجودكم.</p>
+    <h2 class="names">محمود <span>و</span> سارة</h2>
+    <p class="details" style="font-family: 'Amiri', serif; font-size: 16px; margin: 5px 0 10px; font-weight: bold; color: var(--accent);">بارك الله لهما وبارك عليهما وجمع بينهما في خير</p>
+    <p class="details">وذلك بمشيئة الله يوم</p>
+    <p class="date-time">الجمعة 7 نوفمبر 2025</p>
+    <p class="date-time">الساعة 7 مساءً</p>
+    
+    <div class="countdown-container">
+      <div class="countdown-item"><span id="days">00</span><small>يوم</small></div>
+      <div class="countdown-item"><span id="hours">00</span><small>ساعة</small></div>
+      <div class="countdown-item"><span id="minutes">00</span><small>دقيقة</small></div>
+      <div class="countdown-item"><span id="seconds">00</span><small>ثانية</small></div>
+    </div>
+
+    <div class="calendar-btn-container">
+        <button class="calendar-btn" onclick="createCalendarEvent()">احفظ الموعد</button>
+    </div>
+
+    <div class="location-section">
+      <p class="details">في قاعة</p>
+      <p class="location-name">قاعة همسات داخل قاعات دار النيل - كورنيش النيل، إمبابة</p>
+      <a href="Https://maps.app.goo.gl/GZqAKa6k5JPzHBWy7" target="_blank" class="location-btn" id="location-link">
+        <i class="fas fa-map-marker-alt"></i> الموقع على الخريطة
+      </a>
+    </div>
+
+    <div class="messages-section">
+      <h3>تأكيد الحضور والتهاني</h3>
+      <div class="message-form">
+        <input type="text" id="guest-name" class="message-input" placeholder="اكتب اسمك هنا..." required>
+        <textarea id="message-text" class="message-input" placeholder="اكتب تهنئتك هنا..." required></textarea>
+        <button class="message-btn" onclick="saveMessage()">إرسال</button>
+      </div>
+      <div class="messages-list" id="messages-list">
+        </div>
+    </div>
+    
+    <p class="footer">دامت الافراح عامرة في بيوتكم</p>
+
+  </div>
+  
+  <script src="https://al-sabr.github.io/wedding-card/js/html2canvas.min.js"></script>
+  <script src="https://al-sabr.github.io/wedding-card/js/jspdf.umd.min.js"></script>
+  <script>
+    // Music control
+    const musicControlBtn = document.getElementById('music-control');
+    const musicIcon = musicControlBtn.querySelector('i');
+    const bgMusic = document.getElementById('bg-music');
+    let isMusicPlaying = false;
+
+    musicControlBtn.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play().then(() => {
+          isMusicPlaying = true;
+          musicIcon.classList.remove('fa-music');
+          musicIcon.classList.add('fa-pause');
+        }).catch(e => console.error("Error playing music:", e));
+      } else {
+        bgMusic.pause();
+        isMusicPlaying = false;
+        musicIcon.classList.remove('fa-pause');
+        musicIcon.classList.add('fa-music');
+      }
+    });
+
+    // Bloom animation
+    const bloomContainer = document.querySelector('.animated-blooms');
+    function createBloom() {
+        const bloom = document.createElement('i');
+        const isHeart = Math.random() > 0.5;
+        if (isHeart) {
+            bloom.classList.add('fas', 'fa-heart', 'heart');
+        } else {
+            bloom.classList.add('fas', 'fa-seedling', 'rose');
+        }
+        bloom.style.left = Math.random() * 100 + 'vw';
+        bloom.style.animationDelay = Math.random() * 15 + 's';
+        bloom.style.animationDuration = Math.random() * 10 + 10 + 's';
+        bloomContainer.appendChild(bloom);
+        bloom.addEventListener('animationend', () => {
+            bloom.remove();
+        });
+    }
+    setInterval(createBloom, 500);
+
+    // Countdown timer
+    const countdownDate = new Date("Nov 7, 2025 19:00:00").getTime();
+    const x = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "تم الزفاف!";
+      }
+    }, 1000);
+    
+    // Guest messages and RSVP
+    function saveMessage() {
+        const guestName = document.getElementById('guest-name').value.trim();
+        const messageText = document.getElementById('message-text').value.trim();
+        if (guestName && messageText) {
+            const messages = JSON.parse(localStorage.getItem('wedding_messages') || '[]');
+            messages.push({ name: guestName, message: messageText });
+            localStorage.setItem('wedding_messages', JSON.stringify(messages));
+            displayMessages();
+            document.getElementById('guest-name').value = '';
+            document.getElementById('message-text').value = '';
+        }
+    }
+    
+    function displayMessages() {
+        const messagesList = document.getElementById('messages-list');
+        messagesList.innerHTML = '';
+        const messages = JSON.parse(localStorage.getItem('wedding_messages') || '[]');
+        messages.reverse().forEach(msg => {
+            const p = document.createElement('p');
+            p.innerHTML = `<strong>${msg.name}:</strong> ${msg.message}`;
+            messagesList.appendChild(p);
+        });
+    }
+    
+    window.onload = displayMessages;
+
+    // Calendar Event
+    function createCalendarEvent() {
+      const eventTitle = "حفل زفاف محمود وسارة";
+      const eventLocation = "قاعة همسات داخل قاعات دار النيل - كورنيش النيل، إمبابة";
+      const eventDescription = "نتشرف بحضوركم لمشاركتنا فرحتنا الكبرى.";
+      const startTime = "20251107T170000Z";
+      const endTime = "20251107T210000Z";
+
+      const icsData = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${eventTitle}\nLOCATION:${eventLocation}\nDESCRIPTION:${eventDescription}\nDTSTART:${startTime}\nDTEND:${endTime}\nEND:VEVENT\nEND:VCALENDAR`;
+
+      const blob = new Blob([icsData], { type: "text/calendar;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "دعوة-زفاف-محمود-وسارة.ics";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    
+  </script>
+</body>
+</html>
